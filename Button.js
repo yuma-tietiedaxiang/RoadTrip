@@ -1,8 +1,8 @@
 class Button {
     constructor(X, Y) {
       // 构造函数，初始化按钮的x和y坐标
-      this.x = X;
-      this.y = Y;
+      this.x = X+340;
+      this.y = Y+160;
     }
   
     // 显示按钮的方法

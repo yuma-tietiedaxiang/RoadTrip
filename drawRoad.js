@@ -1,50 +1,40 @@
 function drawRoad() {
-	//ground
-	fill(20, 40, 0)
-	triangle(0, 225, 300, 200, 600, 225)
-	rect(0, 225, 600, 400)
+    // 绘制地面
+    fill(20, 40, 0); // 填充颜色为深绿色
+    triangle(0, 225, 640, 200, 1280, 225); // 绘制三角形地面部分
+    rect(0, 225, 1280, 200); // 绘制矩形地面部分，覆盖画布下方
 
+    // 绘制道路
+    fill(30); // 填充颜色为深灰色
+    triangle(0, 400, 640, 200, 1280, 400); // 绘制三角形道路部分
 
+    // 绘制道路上的线条
+    fill(235, 190, 0, 175); // 填充颜色为半透明的黄色
+    triangle(590, 400, 640, 200, 620, 400); // 左侧道路线
+    triangle(660, 400, 640, 200, 690, 400); // 右侧道路线
+
+    // 绘制天空框架
+    stroke(50, 50, 50); // 设置边框颜色为深灰色
+    strokeWeight(20); // 边框粗细为20
+    noFill(); // 不填充
+    rect(0, 0, 1280,400, 25); // 绘制天空部分的框架，圆角半径为25
+
+    // 绘制树（伪代码，实际绘制时可能需要图像）
+	//draw tree
+	tree = new Tree(120,230,35,36,70)
+	tree.draw()
 	
-	
-// 	image(tree, 320, 188, 0.025 * tree.width, 0.025 * tree.height)
-	
-// 	image(tree, 185, 175, 0.05 * tree.width, 0.05 * tree.height)
-// 	image(tree, 350, 175, 0.05 * tree.width, 0.05 * tree.height)
+    push(); // 保存当前绘图状态
 
-// 	image(tree, 65, 150, 0.1 * tree.width, 0.1 * tree.height)
-// 	image(tree, 405, 150, 0.1 * tree.width, 0.1 * tree.height)
+    // 树的运动
+    translate(375 + (Counter), 200 + (Counter * 0.43)); // 移动树的位置，根据Counter值调整
 
-// 	image(tree, -120, 100, 0.2 * tree.width, 0.2 * tree.height)
-// 	image(tree, 445, 100, 0.2 * tree.width, 0.2 * tree.height)
+    // 改变树的大小
+    scale(Counter / 20); // 根据Counter值调整树的缩放比例
 
-	// road
-	fill(30)
-	triangle(0, 325, 300, 200, 600, 325)
+    // 关闭当前的绘图状态
+    pop(); // 恢复之前保存的绘图状态
 
-	// road lines
-	fill(235, 190, 0, 175)
-	triangle(275, 325, 300, 200, 290, 325)
-	triangle(310, 325, 300, 200, 325, 325)
-
-	// sky frame
-	stroke(50, 50, 50)
-	strokeWeight(20)
-	noFill()
-	rect(0, 0, 600, 325, 25);
-
-		// trees
-	push();
-	
-	// movement 
-	translate(375 + (Counter), 200 + (Counter * 0.43)); //movement
-	
-	// alters the size
-	scale(Counter / 20); //speed 
-
-
-	// closes
-	pop();
-	
-	Counter++
+    // 递增Counter，控制运动的变量
+    Counter++;
 }

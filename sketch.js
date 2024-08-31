@@ -2,7 +2,7 @@ let sky;
 let buttonArray = [];
 let Counter = 0;
 let tree;
-let spectrum;
+let noiseOffset = 0;
 
 function setup() {
   // 创建一个宽1280px，高800px的画布
@@ -28,16 +28,24 @@ function draw() {
   // 打印鼠标的x和y坐标（四舍五入）
   print(round(mouseX), round(mouseY));
 	
-  // 使用噪声函数生成色谱
-  
+  // 使用噪声函数生成色谱数组
+  let spectrum = [];
+  for (let i = 0; i < 800; i++) {
+    spectrum[i] = noise(i * 0.01 + noiseOffset) * 255;  // 生成噪声值，并将其扩展到0-255范围
+  }
 
   // 绘制天空的颜色渐变
   for (let i = 0; i < 800; i++) {
-    spectrum = noise(0, 255)
     noStroke();
     fill((spectrum[i] / 5) + 50, (spectrum[i] / 4) + 50, (spectrum[i] / 2) + 100);
-    rect(0, 0.5 * i, 600, 0.5);
+    // 使用椭圆绘制天空的渐变
+    let ellipseWidth = 600; // 椭圆的宽度
+    let ellipseHeight = 350;  // 椭圆的高度
+    ellipse(300, 1 * i, ellipseWidth, ellipseHeight); // 椭圆的x坐标为300, y坐标为0.5 * i
   }
+
+  // 增加噪声偏移，使渐变在时间上发生变化
+  noiseOffset += 0.01;
 
   // 绘制道路（自定义函数）
   drawRoad();

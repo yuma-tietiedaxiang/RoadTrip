@@ -41,9 +41,7 @@ function drawRoad() {
 	
 	// alters the size
 	scale(Counter / 20); //speed 
-	
-	// tree image
-	image(tree, 0, 0, 0.025 * tree.width, 0.025 * tree.height);
+
 
 	// closes
 	pop();

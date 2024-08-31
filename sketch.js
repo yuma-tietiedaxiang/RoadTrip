@@ -1,6 +1,8 @@
 let sky;
 let buttonArray = [];
 let Counter = 0;
+let tree;
+let spectrum;
 
 function setup() {
   // 创建一个宽1280px，高800px的画布
@@ -27,10 +29,11 @@ function draw() {
   print(round(mouseX), round(mouseY));
 	
   // 使用噪声函数生成色谱
-  let spectrum = noise(0, 255);
+  
 
   // 绘制天空的颜色渐变
   for (let i = 0; i < 800; i++) {
+    spectrum = noise(0, 255)
     noStroke();
     fill((spectrum[i] / 5) + 50, (spectrum[i] / 4) + 50, (spectrum[i] / 2) + 100);
     rect(0, 0.5 * i, 600, 0.5);
@@ -41,6 +44,10 @@ function draw() {
 
   // 绘制收音机（自定义函数）
   drawRadio();
+
+  //draw tree
+  tree = new Tree(120,230,35,36,70)
+  tree.draw()
 
   // 使用循环显示buttonArray数组中的所有Button对象
   for (let i = 0; i < 6; i = i + 1) { // 循环用于确定小球的数量

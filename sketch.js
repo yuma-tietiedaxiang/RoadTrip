@@ -1,5 +1,16 @@
 let sky;
 let buttonArray = [];
+let songs = [
+  "🎵Michael - Killer Mike",
+  "🎵Victoria Monét",
+  "🎵Tyla - Water",
+  "🎵Lostboy - Padam Padam",
+  "🎵What Was I Made For? - Billie Eilish, FINNEAS",
+  "🎵Guy Massey - Padam Padam",
+  "🎵Flowers - Miley Cyrus, Kid Harpoon, Michael Pollack",
+  "🎵Bell Bottom Country - Lainey Wilson"
+];
+let currentSong = ""; // 用于存储当前显示的歌曲名字
 let Counter = 0;
 let steeringWheel;  // 用于存储方向盘的对象
 let tree;
@@ -66,6 +77,14 @@ function draw() {
     buttonArray[i].show();
   }
 
+  // 显示当前选中的歌曲名字
+  if (currentSong !== "") {
+    fill(255); // 将字体颜色设置为白色
+    textSize(20);
+    textAlign(CENTER);
+    text(currentSong, width / 2, height - 100); // 在屏幕下方显示歌曲名字
+  }
+
   // 绘制声音波形
   beginShape();
   stroke(50, 50, 0, 175); // 设置线条颜色为半透明的深色
@@ -79,7 +98,15 @@ function draw() {
 }
 
 function mousePressed() {
-  steeringWheel.checkDragging(mouseX, mouseY);  // 检查是否开始拖动方向盘
+  // 检查方向盘是否被点击
+  steeringWheel.checkDragging(mouseX, mouseY);
+
+  // 检测所有按钮是否被点击
+  for (let i = 0; i < buttonArray.length; i++) {
+      if (buttonArray[i].isClicked(mouseX, mouseY)) {
+          currentSong = random(songs); // 从歌曲列表中随机选择一首
+      }
+  }
 }
 
 function mouseReleased() {
@@ -93,6 +120,9 @@ function mouseDragged() {
 function keyPressed() {
   steeringWheel.keyControl(keyCode);  // 键盘控制方向盘
 }
+
+
+
 
 // 当按下空格键时，将当前画布内容保存为"thumbnail.png"文件
 function keyTyped() {

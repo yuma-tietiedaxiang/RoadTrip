@@ -33,7 +33,7 @@ function draw() {
   for (let i = 0; i < 800; i++) {
     noStroke();
     fill((spectrum[i] / 5) + 50, (spectrum[i] / 4) + 50, (spectrum[i] / 2) + 100);
-    rect(400, 0.5 * i, 600, 0.5);
+    rect(0, 0.5 * i, 600, 0.5);
   }
 
   // 绘制道路（自定义函数）

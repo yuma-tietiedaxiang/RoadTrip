@@ -4,6 +4,8 @@ function drawRoad() {
 	triangle(0, 225, 300, 200, 600, 225)
 	rect(0, 225, 600, 400)
 
+
+	
 	
 // 	image(tree, 320, 188, 0.025 * tree.width, 0.025 * tree.height)
 	
@@ -40,9 +42,8 @@ function drawRoad() {
 	// alters the size
 	scale(Counter / 20); //speed 
 	
-	// draw tree 
-	let tree = new Tree(200,200, 50,20);
-	tree.draw()
+	// tree image
+	image(tree, 0, 0, 0.025 * tree.width, 0.025 * tree.height);
 
 	// closes
 	pop();

@@ -132,9 +132,6 @@ function mouseDragged() {
   steeringWheel.drag(mouseX, mouseY);  // 拖动方向盘
 }
 
-function keyPressed() {
-  steeringWheel.keyControl(keyCode);  // 键盘控制方向盘
-}
 
 // 当按下空格键时，将当前画布内容保存为"thumbnail.png"文件
 function keyTyped() {

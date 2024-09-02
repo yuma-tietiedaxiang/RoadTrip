@@ -12,7 +12,11 @@ let songs = [
 let currentSong = ""; // 用于存储当前显示的歌曲名字
 let Counter = 0;
 let steeringWheel;  // 用于存储方向盘的对象
-let tree;
+let tree1;
+let tree2;
+let tree3;
+let tree4;
+let tree5;
 let noiseOffset = 0;
 let showWaveform = true; // 标志位，控制显示波形或歌曲
 let dog;
@@ -36,6 +40,12 @@ function setup() {
   steeringWheel = new SteeringWheel(1080, 500, 170);  // 创建方向盘对象
 
   dog = new Dog(190, 590); // Initialize dog at center
+
+  tree1 = new Tree(120,230,20,20,40)
+  tree2 = new Tree(220,300,35,36,70)
+  tree3 = new Tree(900,220,10,10,20)
+  tree4 = new Tree(1200,320,35,36,70)
+  tree5 = new Tree(400,250,20,20,50)
 }
 
 function draw() {
@@ -66,6 +76,13 @@ function draw() {
 
   // 绘制道路（自定义函数）
   drawRoad();
+
+	//draw tree
+	tree1.draw()
+  tree2.draw()
+  tree3.draw()
+  tree4.draw()
+  tree5.draw()
 
   // 绘制收音机（自定义函数）
   drawRadio();
@@ -112,6 +129,11 @@ function mousePressed() {
           currentSong = random(songs); // 从歌曲列表中随机选择一首
           showWaveform = false; // 隐藏波形，显示歌曲
       }
+  }
+
+  let d = dist(mouseX, mouseY, myTree.x, myTree.y - myTree.trunkHeight * 2);
+  if (d < myTree.leafSize / 2) {
+    myTree.enlargeLeaves(); // 当鼠标点击树叶范围内时，增大树冠
   }
 }
 

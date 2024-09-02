@@ -19,22 +19,5 @@ function drawRoad() {
     noFill(); // 不填充
     rect(0, 0, 1280,400, 25); // 绘制天空部分的框架，圆角半径为25
 
-    // 绘制树（伪代码，实际绘制时可能需要图像）
-	//draw tree
-	tree = new Tree(120,230,35,36,70)
-	tree.draw()
 	
-    push(); // 保存当前绘图状态
-
-    // 树的运动
-    translate(375 + (Counter), 200 + (Counter * 0.43)); // 移动树的位置，根据Counter值调整
-
-    // 改变树的大小
-    scale(Counter / 20); // 根据Counter值调整树的缩放比例
-
-    // 关闭当前的绘图状态
-    pop(); // 恢复之前保存的绘图状态
-
-    // 递增Counter，控制运动的变量
-    Counter++;
 }

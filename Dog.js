@@ -14,7 +14,7 @@ class Dog {
     fill(255); // 文字颜色为白色
     textSize(16); // 文字大小
     textAlign(LEFT, BOTTOM); // 左下角对齐
-    text("(1)pet dog using mouse and arrwo key (2)try radio button (3)drag steeringwheel (4)check the sky ❤️  ", 70, height - 10); // 在左下角绘制提示文字
+    text("(1)pet dog using mouse and arrow key (2)try radio button (3)drag steeringwheel (4)check the sky ❤️  ", 70, height - 10); // 在左下角绘制提示文字
     
   
 

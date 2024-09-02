@@ -1,4 +1,5 @@
 # References
-- [1] Example Author. 2022. p5.js example code video. Retrieved from https://example.com/video
+- [1] Ashlyn McClendon. 2023. Rowan trees. Retrieved from https://openprocessing.org/sketch/2118462
 
-https://openprocessing.org/sketch/829531
+- [2] Erin. 2020. sketch_4_4. Retrieved from https://openprocessing.org/sketch/829531
+‌

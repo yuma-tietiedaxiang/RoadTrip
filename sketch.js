@@ -50,7 +50,7 @@ function draw() {
   // 打印鼠标的x和y坐标（四舍五入）
   print(round(mouseX), round(mouseY));
 
-  sky.render(); // 渲染天空
+  // sky.render(); // 渲染天空
 	
   // 使用噪声函数生成色谱数组
   let spectrum = [];
@@ -71,38 +71,61 @@ function draw() {
   tree4.draw()
   tree5.draw()
 
-  // 绘制收音机（自定义函数）
-  drawRadio();
+  // // 绘制收音机（自定义函数）
+  // drawRadio();
 
-  //方向盘
-  steeringWheel.display();  // 绘制方向盘
-  steeringWheel.showAngle();  // 显示当前角度
+  // //方向盘
+  // steeringWheel.display();  // 绘制方向盘
+  // steeringWheel.showAngle();  // 显示当前角度
 
-  // 使用循环显示buttonArray数组中的所有Button对象
-  for (let i = 0; i < 6; i = i + 1) { // 循环用于确定小球的数量
-    buttonArray[i].show();
-  }
+  // // 使用循环显示buttonArray数组中的所有Button对象
+  // for (let i = 0; i < 6; i = i + 1) { // 循环用于确定小球的数量
+  //   buttonArray[i].show();
+  // }
 
-  if (showWaveform) {
-    // 显示声音波形
-    beginShape();
-    stroke(50, 50, 0, 175); // 设置线条颜色为半透明的深色
-    strokeWeight(1.25); // 设置线条粗细
-    noFill(); // 不填充图形内部
-    for (let i = 370; i < 370 + 230; i++) {
-      // 使用vertex绘制波形的顶点，将spectrum数组中的值映射到适当的高度
-      vertex(i + 150, map(spectrum[i] - 2350, 0, 455, 200, 130));
-    }
-    endShape();
-  } else if (currentSong !== "") {
-    // 显示当前选中的歌曲名字
-    fill(195, 204, 219); // 将字体颜色设置为白色
-    textSize(20);
-    textAlign(CENTER);
-    text(currentSong, width / 2, 555); // 在声音波形位置显示歌曲名字
-  }
+  // if (showWaveform) {
+  //   // 显示声音波形
+  //   beginShape();
+  //   stroke(50, 50, 0, 175); // 设置线条颜色为半透明的深色
+  //   strokeWeight(1.25); // 设置线条粗细
+  //   noFill(); // 不填充图形内部
+  //   for (let i = 370; i < 370 + 230; i++) {
+  //     // 使用vertex绘制波形的顶点，将spectrum数组中的值映射到适当的高度
+  //     vertex(i + 150, map(spectrum[i] - 2350, 0, 455, 200, 130));
+  //   }
+  //   endShape();
+  // } else if (currentSong !== "") {
+  //   // 显示当前选中的歌曲名字
+  //   fill(195, 204, 219); // 将字体颜色设置为白色
+  //   textSize(20);
+  //   textAlign(CENTER);
+  //   text(currentSong, width / 2, 555); // 在声音波形位置显示歌曲名字
+  // }
 
-  dog.drawDog();
+  // dog.drawDog();
+}
+
+function drawRoad() {
+  // 绘制地面
+  fill(20, 40, 0); // 填充颜色为深绿色
+  triangle(0, 225, 640, 200, 1280, 225); // 绘制三角形地面部分
+  rect(0, 225, 1280, 200); // 绘制矩形地面部分，覆盖画布下方
+
+  // 绘制道路
+  fill(30); // 填充颜色为深灰色
+  triangle(0, 400, 640, 200, 1280, 400); // 绘制三角形道路部分
+
+  // 绘制道路上的线条
+  fill(235, 190, 0, 175); // 填充颜色为半透明的黄色
+  triangle(590, 400, 640, 200, 620, 400); // 左侧道路线
+  triangle(660, 400, 640, 200, 690, 400); // 右侧道路线
+
+  // 绘制天空框架
+  stroke(50, 50, 50); // 设置边框颜色为深灰色
+  strokeWeight(20); // 边框粗细为20
+  noFill(); // 不填充
+  rect(0, 0, 1280,400, 25); // 绘制天空部分的框架，圆角半径为25
+
 }
 
 // 鼠标交互事件
@@ -132,6 +155,9 @@ function mouseDragged() {
   steeringWheel.drag(mouseX, mouseY);  // 拖动方向盘
 }
 
+// function keyPressed() {
+//   steeringWheel.keyControl(keyCode);  // 键盘控制方向盘
+// }
 
 // 当按下空格键时，将当前画布内容保存为"thumbnail.png"文件
 function keyTyped() {

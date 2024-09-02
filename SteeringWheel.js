@@ -14,8 +14,8 @@ class SteeringWheel {
 
     // 绘制方向盘的外圈
     fill(50);
-    stroke(10);
-    strokeWeight(35);
+    stroke(15);
+    strokeWeight(40);
     ellipse(0, 0, this.radius * 2, this.radius * 2);
 
     // 绘制方向盘的轮辐
@@ -32,10 +32,6 @@ class SteeringWheel {
 
     // 绘制方向盘中央的装饰
     fill(255, 204, 0);
-    textSize(32);
-    textAlign(CENTER, CENTER);
-    text("HORN", 0, 0);
-
     pop();
   }
 
@@ -65,13 +61,6 @@ class SteeringWheel {
     }
   }
 
-  keyControl(key) {
-    if (key === LEFT_ARROW) {
-      this.angle -= radians(5);
-    } else if (key === RIGHT_ARROW) {
-      this.angle += radians(5);
-    }
-  }
 }
 
 

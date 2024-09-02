@@ -15,6 +15,7 @@ let steeringWheel;  // 用于存储方向盘的对象
 let tree;
 let noiseOffset = 0;
 let showWaveform = true; // 标志位，控制显示波形或歌曲
+let dog;
 
 function setup() {
   // 创建一个宽1280px，高800px的画布
@@ -33,6 +34,8 @@ function setup() {
   }
 
   steeringWheel = new SteeringWheel(1080, 500, 170);  // 创建方向盘对象
+
+  dog = new Dog(190, 590); // Initialize dog at center
 }
 
 function draw() {
@@ -48,15 +51,15 @@ function draw() {
     spectrum[i] = noise(i * 0.01 + noiseOffset) * 255;  // 生成噪声值，并将其扩展到0-255范围
   }
 
-  // 绘制天空的颜色渐变
-  for (let i = 0; i < 800; i++) {
-    noStroke();
-    fill((spectrum[i] / 5) + 50, (spectrum[i] / 4) + 50, (spectrum[i] / 2) + 100);
-    // 使用椭圆绘制天空的渐变
-    let ellipseWidth = 1280; // 椭圆的宽度
-    let ellipseHeight = 350;  // 椭圆的高度
-    ellipse(640, 1 * i, ellipseWidth, ellipseHeight); // 椭圆的x坐标为300, y坐标为0.5 * i
-  }
+  // // 绘制天空的颜色渐变
+  // for (let i = 0; i < 800; i++) {
+  //   noStroke();
+  //   fill((spectrum[i] / 5) + 50, (spectrum[i] / 4) + 50, (spectrum[i] / 2) + 100);
+  //   // 使用椭圆绘制天空的渐变
+  //   let ellipseWidth = 1280; // 椭圆的宽度
+  //   let ellipseHeight = 350;  // 椭圆的高度
+  //   ellipse(640, 1 * i, ellipseWidth, ellipseHeight); // 椭圆的x坐标为300, y坐标为0.5 * i
+  // }
 
   // 增加噪声偏移，使渐变在时间上发生变化
   noiseOffset += 0.01;
@@ -94,6 +97,8 @@ function draw() {
     textAlign(CENTER);
     text(currentSong, width / 2, 555); // 在声音波形位置显示歌曲名字
   }
+
+  dog.drawDog();
 }
 
 // 鼠标交互事件
@@ -109,6 +114,7 @@ function mousePressed() {
       }
   }
 }
+
 
 function mouseReleased() {
   steeringWheel.stopDragging();  // 停止拖动方向盘

@@ -8,7 +8,14 @@ class Dog {
 
     //body
     fill(61, 42, 8)
-    ellipse(190, 800, 300, 300);
+    ellipse(195, 800, 300, 400);
+
+
+    fill(255); // 文字颜色为白色
+    textSize(16); // 文字大小
+    textAlign(LEFT, BOTTOM); // 左下角对齐
+    text("(1)pet dog using mouse and arrwo key (2)try radio button (3)drag steeringwheel (4)check the sky ❤️  ", 70, height - 10); // 在左下角绘制提示文字
+    
   
 
     // Back of ears 1

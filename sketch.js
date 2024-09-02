@@ -1,3 +1,4 @@
+let sky;
 let buttonArray = [];
 let songs = [
   "🎵Michael - Killer Mike",
@@ -10,7 +11,6 @@ let songs = [
   "🎵Bell Bottom-Lainey Wilson"
 ];
 let currentSong = ""; // 用于存储当前显示的歌曲名字
-let Counter = 0;
 let steeringWheel;  // 用于存储方向盘的对象
 let tree1;
 let tree2;
@@ -25,12 +25,7 @@ function setup() {
   // 创建一个宽1280px，高800px的画布
   createCanvas(1280, 800);
   
-  // 设置背景颜色为灰色(100)
-  background(100);
-  
-  // 设置填充颜色为黑色，并绘制一个覆盖整个画布的矩形
-  fill(0);
-  rect(0, 0, width, height);
+  sky = new Sky(); // 创建天空对象
 
   // 使用for循环创建多个Button对象，并将它们添加到buttonArray数组中
   for (let i = 125; i < 500; i = i + 60) { // 循环以指定颜色和小球的位置
@@ -39,7 +34,7 @@ function setup() {
 
   steeringWheel = new SteeringWheel(1080, 500, 170);  // 创建方向盘对象
 
-  dog = new Dog(190, 590); // Initialize dog at center
+  dog = new Dog(200, 530); // Initialize dog at center
 
   tree1 = new Tree(120,230,20,20,40)
   tree2 = new Tree(220,300,35,36,70)
@@ -54,22 +49,14 @@ function draw() {
 	
   // 打印鼠标的x和y坐标（四舍五入）
   print(round(mouseX), round(mouseY));
+
+  sky.render(); // 渲染天空
 	
   // 使用噪声函数生成色谱数组
   let spectrum = [];
   for (let i = 0; i < 800; i++) {
     spectrum[i] = noise(i * 0.01 + noiseOffset) * 255;  // 生成噪声值，并将其扩展到0-255范围
   }
-
-  // // 绘制天空的颜色渐变
-  // for (let i = 0; i < 800; i++) {
-  //   noStroke();
-  //   fill((spectrum[i] / 5) + 50, (spectrum[i] / 4) + 50, (spectrum[i] / 2) + 100);
-  //   // 使用椭圆绘制天空的渐变
-  //   let ellipseWidth = 1280; // 椭圆的宽度
-  //   let ellipseHeight = 350;  // 椭圆的高度
-  //   ellipse(640, 1 * i, ellipseWidth, ellipseHeight); // 椭圆的x坐标为300, y坐标为0.5 * i
-  // }
 
   // 增加噪声偏移，使渐变在时间上发生变化
   noiseOffset += 0.01;
@@ -131,9 +118,8 @@ function mousePressed() {
       }
   }
 
-  let d = dist(mouseX, mouseY, myTree.x, myTree.y - myTree.trunkHeight * 2);
-  if (d < myTree.leafSize / 2) {
-    myTree.enlargeLeaves(); // 当鼠标点击树叶范围内时，增大树冠
+  if (mouseX >= 0 && mouseX <= 1280 && mouseY >= 0 && mouseY <= 400) {
+    sky.toggleDayNight(); // 切换白天和黑夜
   }
 }
 

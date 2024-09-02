@@ -39,7 +39,7 @@ class SteeringWheel {
     fill(0);
     textSize(20);
     textAlign(CENTER);
-    text("Angle: " + degrees(this.angle).toFixed(2) + "°", this.x, this.y + this.radius + 50);
+    // text("hold & drag " + degrees(this.angle).toFixed(2) + "°", this.x, this.y + this.radius + 50);
   }
 
   checkDragging(mx, my) {
